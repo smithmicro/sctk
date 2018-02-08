@@ -12,7 +12,6 @@ RUN apk add --update \
   && rm -rf /var/cache/apk/*
 
 WORKDIR /opt
-COPY ${SCTK_FILENAME} /opt/
 
 # Build and install all SCTK tools
 RUN curl -O ftp://jaguar.ncsl.nist.gov/pub/$SCTK_FILENAME \

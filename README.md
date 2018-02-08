@@ -37,7 +37,7 @@ To run more advanced features of the SDK, shell into the container with a volume
 $ docker run -it -v /myhostpath:/var/sctk smithmicro/sctk sh
 /var/sctk #
 ```
-Then run sclite pipled to sc_stats:
+Then run sclite piped to sc_stats:
 ```
 $ sclite -i wsj -r ref.txt -h hyp1.txt -h hyp2.txt -o sgml stdout \
     | sc_stats -p -t mapsswe -u

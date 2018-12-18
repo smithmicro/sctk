@@ -10,7 +10,7 @@ Run [SCTK](http://www.nist.gov/itl/iad/mig/tools.cfm) in a Docker container.  Th
 # Docker Hub
 The image is available on Docker Hub as [`smithmicro/sctk`](https://hub.docker.com/r/smithmicro/sctk/) with the following tags:
 
-  * `latest`, `2`, `2.4`, `2.4.10` ([Dockerfile](https://github.com/smithmicro/sctk/blob/master/Dockerfile))
+  * `latest`, `2`, `2.4`, `2.4.11` ([Dockerfile](https://github.com/smithmicro/sctk/blob/master/Dockerfile))
 
 
 # Usage
@@ -19,7 +19,7 @@ The image is available on Docker Hub as [`smithmicro/sctk`](https://hub.docker.c
 ```
 $ docker run -it smithmicro/sctk
 sclite: <OPTIONS>
-sclite Version: 2.10, SCTK Version: 1.3
+sclite Version: 2.11, SCTK Version: 1.3
 Input Options:
 ...
 ```
@@ -27,19 +27,24 @@ Input Options:
 ## Hypothesis Test
 To run `sclite` on a reference file and hypothesis file, you need to map a volume to your host:
 ```
-$ docker run -it -v /myhostpath:/var/sctk smithmicro/sctk sclite \
+docker run -it -v /myhostpath:/var/sctk smithmicro/sctk sclite \
+    -i wsj -r ref.txt -h hyp.txt
+```
+or, if you are on Linux or a Mac, use $PWD:
+```
+docker run -it -v $PWD:/var/sctk smithmicro/sctk sclite \
     -i wsj -r ref.txt -h hyp.txt
 ```
 
 ## sc_stats
 To run more advanced features of the SDK, shell into the container with a volume mapped to your local files:
 ```
-$ docker run -it -v /myhostpath:/var/sctk smithmicro/sctk sh
+docker run -it -v /myhostpath:/var/sctk smithmicro/sctk sh
 /var/sctk #
 ```
 Then run sclite piped to sc_stats:
 ```
-$ sclite -i wsj -r ref.txt -h hyp1.txt -h hyp2.txt -o sgml stdout \
+sclite -i wsj -r ref.txt -h hyp1.txt -h hyp2.txt -o sgml stdout \
     | sc_stats -p -t mapsswe -u
 sc_stats: 1.3
 Beginning Multi-System comparisons and reports

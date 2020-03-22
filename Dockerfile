@@ -26,6 +26,6 @@ RUN apk add --update \
 
 COPY --from=builder /opt/SCTK/bin/* /usr/local/bin/
 
-#WORKDIR /var/sctk
+WORKDIR /var/sctk
 
 CMD ["sclite"]

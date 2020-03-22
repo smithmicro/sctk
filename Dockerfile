@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM alpine:3.11 as builder
 
 LABEL maintainer="Dave Sperling <dsperling@smithmicro.com>"
 LABEL Description="NIST Speech Recognition Scoring Toolkit (SCTK)"
@@ -16,10 +16,16 @@ RUN git clone https://github.com/usnistgov/SCTK \
  && cd SCTK \
  && make config \
  && make all \
- && make install \
- && make clean \
- && cp ./bin/* /usr/local/bin/
+ && make install
 
-WORKDIR /var/sctk
+FROM alpine:3.11
+
+RUN apk add --update \
+    perl \
+ && rm -rf /var/cache/apk/*
+
+COPY --from=builder /opt/SCTK/bin/* /usr/local/bin/
+
+#WORKDIR /var/sctk
 
 CMD ["sclite"]

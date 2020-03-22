@@ -1,6 +1,6 @@
 # Overview
 
-Run [SCTK](http://www.nist.gov/itl/iad/mig/tools.cfm) in a Docker container.  The SCTK includes the following tools:
+Run [SCTK](https://github.com/usnistgov/SCTK) in a Docker container.  The SCTK includes the following tools:
 * sclite
 * asclite
 * sc_stats
@@ -19,7 +19,7 @@ The image is available on Docker Hub as [`smithmicro/sctk`](https://hub.docker.c
 ```
 $ docker run -it smithmicro/sctk
 sclite: <OPTIONS>
-sclite Version: 2.11, SCTK Version: 1.3
+sclite Version: 2.10, SCTK Version: 1.3
 Input Options:
 ...
 ```

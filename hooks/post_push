@@ -3,5 +3,7 @@ docker tag $IMAGE_NAME $DOCKER_REPO:latest
 docker push $DOCKER_REPO:latest
 docker tag $IMAGE_NAME $DOCKER_REPO:2.4
 docker push $DOCKER_REPO:2.4
+docker tag $IMAGE_NAME $DOCKER_REPO:2.4.12
+docker push $DOCKER_REPO:2.4.12
 docker tag $IMAGE_NAME $DOCKER_REPO:2
 docker push $DOCKER_REPO:2
